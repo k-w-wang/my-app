@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { memo, useCallback, useEffect, useState } from "react";
 
 import { PDFDocumentProxy, PDFPageProxy, PageViewport } from "pdfjs-dist";

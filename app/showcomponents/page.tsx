@@ -1,3 +1,4 @@
+'use client'
 import CommentInput from "@/components/CommentInput";
 import Donation from "@/components/Donation";
 import Timeline from "@/components/Timeline";

@@ -1,9 +1,6 @@
 'use client';
 import React, { useEffect, useState } from "react";
-import Markdown, { ExtraProps } from "react-markdown";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import remarkGfm from "remark-gfm";
-import { dark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+import Markdown from "react-markdown";
 import FlickerCursorWapper from "@/components/FlickerCursorWapper";
 
 export default function StreamOutput() {
@@ -43,37 +40,12 @@ A table:
 			setIsrunning(false);
 			clearInterval(timer);
 		};
-	}, []);
+	}, [string]);
 
 	return (
 		<FlickerCursorWapper isFlicker={isrunning}>
 			<Markdown
-				// remarkPlugins={[remarkGfm]}
-				// components={{
-				// 	code(
-				// 		props: React.ClassAttributes<HTMLElement> &
-				// 			React.HTMLAttributes<HTMLElement> &
-				// 			ExtraProps
-				// 	) {
-				// 		const { children, className, ref, ...rest } = props;
-				// 		const match = /language-(\w+)/.exec(className ?? "");
-				// 		return match != null ? (
-				// 			<SyntaxHighlighter
-				// 				{...rest}
-				// 				ref={ref as React.Ref<SyntaxHighlighter>}
-				// 				PreTag="div"
-				// 				language={match[1]}
-				// 				style={dark}
-				// 			>
-				// 				{String(children ?? "").replace(/\n$/, "")}
-				// 			</SyntaxHighlighter>
-				// 		) : (
-				// 			<code {...rest} className={className}>
-				// 				{children}
-				// 			</code>
-				// 		);
-				// 	},
-				// }}
+				
 			>
 				{markdownStr}
 			</Markdown>

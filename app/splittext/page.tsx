@@ -1,3 +1,4 @@
+'use client'
 import CroppingText from "@/components/CroppingText";
 import CroppingTextWapper from "@/components/CroppingTextWapper";
 import React from "react";

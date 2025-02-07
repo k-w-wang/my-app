@@ -65,10 +65,12 @@ export default function CroppingText({
 		return () => {
 			observer.disconnect();
 		};
-	}, [content]);
+	}, [content, positions]);
 
 	// 监听鼠标移动
 	useEffect(() => {
+		const textCurrentRef = textRef.current;
+
 		textRef.current?.addEventListener("mousemove", (e) => {
 			// 鼠标相当于文本节点的相对位置
 			const textRefRect = textRef.current?.getBoundingClientRect();
@@ -81,17 +83,17 @@ export default function CroppingText({
 				y: e.clientY - (textRefRect?.top ?? 0) + (textRefScrollTop ?? 0),
 			});
 		});
-		textRef.current?.addEventListener("mouseleave", (e) => {
+		textRef.current?.addEventListener("mouseleave", () => {
 			setMousePosition({
 				x: 0,
 				y: 0,
 			});
 		});
 		return () => {
-			textRef.current?.removeEventListener("mousemove", () => {
+			textCurrentRef?.removeEventListener("mousemove", () => {
 				console.log("remove mousemove");
 			});
-			textRef.current?.removeEventListener("mouseleave", () => {
+			textCurrentRef?.removeEventListener("mouseleave", () => {
 				console.log("remove mousemove");
 			});
 		};
@@ -121,7 +123,7 @@ export default function CroppingText({
 				setCurrentIndex(index + 1);
 			}
 		});
-	}, [mousePosition]);
+	}, [mousePosition, positions]);
 
 	return (
 		<div

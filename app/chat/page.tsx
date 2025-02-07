@@ -4,7 +4,7 @@ import FlickerCursorWapper from "@/components/FlickerCursorWapper";
 import React, { useState } from "react";
 import Markdown from "react-markdown";
 
-const handleStream = (response, onData) => {
+const handleStream = (response: any, onData: any) => {
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
@@ -16,7 +16,7 @@ const handleStream = (response, onData) => {
   const isFirstMessage = true;
   function read() {
     let hasError = false;
-    reader.read().then((result) => {
+    reader.read().then((result: any) => {
       buffer += decoder.decode(result.value, { stream: true });
       if (result.done) {
         return;
@@ -30,6 +30,7 @@ const handleStream = (response, onData) => {
             try {
               bufferObj = JSON.parse(message.substring(6)); // remove data: and parse as json
             } catch (e) {
+              console.log(e);
               // mute handle message cut off
               onData("", isFirstMessage, {
                 conversationId: bufferObj?.conversation_id,
@@ -46,7 +47,8 @@ const handleStream = (response, onData) => {
           }
         });
         buffer = lines[lines.length - 1];
-      } catch (e) {
+      } catch (e: any) {
+        console.log(e);
         hasError = true;
         return;
       }

@@ -39,7 +39,7 @@ const Donation: React.FC<IProps> = ({ value, onChange }) => {
 		if (!flag) {
 			setFlag(true);
 		}
-	}, [price, currency]);
+	}, [price, currency, onChange, flag]);
 
 	const inputChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setPrice(e.target.value);

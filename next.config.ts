@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   // 确保 Next.js 使用 SSG 而不是 SSR
   // https://nextjs.org/docs/pages/building-your-application/deploying/static-exports
-  // output: "export",
+  output: "export",
   // 注意：在 SSG 模式下使用 Next.js 的 Image 组件需要此功能。
   // 请参阅 https://nextjs.org/docs/messages/export-image-api 了解不同的解决方法。
   images: {

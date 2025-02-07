@@ -7,6 +7,8 @@ import PdfPreview from "../pdfpreviewv2/page";
 
 export default function UploadPdf() {
 	const [pdfDataUrl, setPDFDataUrl] = React.useState<string>();
+	console.log(pdfDataUrl);
+	
 	const props: UploadProps = {
 		accept: ".pdf",
 		beforeUpload: (file) => {
@@ -23,8 +25,8 @@ export default function UploadPdf() {
 	};
 
 	const ShowPdfView = useCallback(() => {
-		return <PdfPreview url={pdfDataUrl} />;
-	}, [pdfDataUrl]);
+		return <PdfPreview />;
+	}, []);
 
 	return (
 		<>

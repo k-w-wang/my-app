@@ -8,8 +8,8 @@ import CatalogItem from "./catalogItem";
 import PdfPage from "./pdfPage";
 
 GlobalWorkerOptions.workerSrc = "pdf.worker.js";
-export default function PdfPreview({ url }: { url?: string }) {
-	const pages = useLoadPdf(url ?? "./demo3.pdf");
+export default function PdfPreview() {
+	const pages = useLoadPdf("./demo3.pdf");
 
 	const [urlList, setUrlList] = useState<string[]>([]);
 
