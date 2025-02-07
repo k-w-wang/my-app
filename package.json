@@ -6,22 +6,35 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "tauri": "tauri"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.5"
+    "@ant-design/nextjs-registry": "^1.0.2",
+    "antd": "^5.23.3",
+    "canvas": "^3.1.0",
+    "lodash": "^4.17.21",
+    "next": "15.1.5",
+    "pdfjs-dist": "^4.2.67",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-konva": "^19.0.2",
+    "react-markdown": "^9.0.3",
+    "react-virtualized-auto-sizer": "^1.0.25",
+    "react-virtuoso": "^4.12.3",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tauri-apps/cli": "^2.2.5",
+    "@types/lodash": "^4.17.15",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
     "eslint": "^9",
     "eslint-config-next": "15.1.5",
-    "@eslint/eslintrc": "^3"
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
   }
 }
