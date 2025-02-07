@@ -1,4 +1,4 @@
-// import qs from "qs";
+import qs from "qs";
 const myHeaders = new Headers();
 async function fetchWithTimeout(
 	resource: RequestInfo | URL,
@@ -41,10 +41,10 @@ export async function get<IP, IR>(
 		mark = "?";
 	}
 
-	// const qsFormat: string = qs.stringify(params, { encode: false });
+	const qsFormat: string = qs.stringify(params, { encode: false });
 
 	return await (
-		await fetchWithTimeout(`${url}${mark}${params}`, {
+		await fetchWithTimeout(`${url}${mark}${qsFormat}`, {
 			...options,
 			method: "GET",
 		})
