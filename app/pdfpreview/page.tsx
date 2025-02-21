@@ -29,7 +29,7 @@ export default function PdfPreview() {
   const virtuosoRef = useRef<VirtuosoHandle>(null);
 
   const pdfdata = useLoadPdfData(
-    "./demo2.pdf",
+    "./demo3.pdf",
     { scale: 1.5 },
   );
 

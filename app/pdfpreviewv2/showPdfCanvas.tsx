@@ -20,6 +20,8 @@ function ShowPdfCanvas(props: Props) {
 	const [canvas, setCanvas] = useState<HTMLCanvasElement>();
 
 	const initPage = useCallback(async () => {
+		console.log(pageNumber);
+		
 		const page = await pages.getPage(pageNumber);
 		const viewport = page.getViewport({ scale: 1.5 });
 		const canvas = document.createElement("canvas");
@@ -32,6 +34,7 @@ function ShowPdfCanvas(props: Props) {
 				viewport,
 			});
 			await renderTask.promise;
+			console.log(page, 'page cleanup');
 			page.cleanup();
 		}
 		onPageLoad?.(page, viewport, pageNumber);

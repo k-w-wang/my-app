@@ -39,8 +39,6 @@ function PdfPage({
 	activePage,
 	handleCurrentPage,
 }: PdfPageProps) {
-	console.log(currentPage);
-
 	const containerRef = useRef<HTMLDivElement>(null);
 	const stageRef = useRef<Konva.Stage>(null);
 	const [scroll, setScroll] = useState<{
@@ -80,12 +78,13 @@ function PdfPage({
 				x: (contentWidth - item.width) / 2, // 居中显示
 				y: getPagesHeight(pageListRef.current.slice(0, index)),
 			}));
+			
+			setPageList((prevState)=>{
+				return !isEqual(pageListRef.current, prevState) ? pageListRef.current : prevState;
+			});
 
-			if (!isEqual(pageListRef.current, pageList)) {
-				setPageList(pageListRef.current);
-			}
 		},
-		[pageList]
+		[]
 	);
 
 	const { contentHeight, contentWidth } = useMemo(() => {

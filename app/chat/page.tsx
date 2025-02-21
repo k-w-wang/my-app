@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import FlickerCursorWapper from "@/components/FlickerCursorWapper";
+import useEventStream from "@/hooks/useEventStream";
 import React, { useState } from "react";
 import Markdown from "react-markdown";
 
@@ -113,6 +114,36 @@ const ChatPage: React.FC = () => {
     }
   };
   console.log(messages);
+  
+
+  const fetchCompletionMessages = (query: string) => {
+    return fetch("/v1/completion-messages", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${"app-E62qov6Mvgpgiy2AJn0y1rD7"}`,
+        },
+        body: JSON.stringify({
+          inputs: {},
+          query: query,
+          response_mode: "streaming",
+          user: "user-003",
+        }),
+    });
+  };
+
+  const { data, error, loading, startRequest: run } = useEventStream(
+    fetchCompletionMessages,
+    {
+      manual: true,
+    }
+  );
+
+  console.log(data);
+  console.log(error);
+  console.log(loading);
+  console.log(run);
+  
   
 
   return (

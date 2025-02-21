@@ -3,7 +3,6 @@
 import { PDFDocumentProxy } from "pdfjs-dist";
 import React, { memo, useEffect } from "react";
 import { useRenderCanvas } from "../../utils/useLoadPdf";
-import imageFallBack from "./catalog-placeholder.png";
 
 interface CatalogItemProps {
   pages: PDFDocumentProxy;
@@ -21,6 +20,10 @@ function CatalogItem({
   defaultUrl,
   onInitial,
 }: CatalogItemProps) {
+
+  console.log('index', index);
+  
+
   const pagedata = useRenderCanvas(pages, index, 0.3, defaultUrl);
 
   useEffect(() => {
@@ -35,15 +38,16 @@ function CatalogItem({
         style={{
           ...(currentPage === index ? { border: "1px solid #000" } : {}),
           margin: "16px",
+          height: "300px",
         }}
       >
-        <img
+        {(defaultUrl || pagedata?.url) && <img
           width={"100%"}
-          src={defaultUrl ?? pagedata?.url ?? (imageFallBack as unknown as string) ?? ''}
+          src={defaultUrl || pagedata?.url}
           onClick={() => {
             clickPage(index);
           }}
-        />
+        />}
 		
       </div>
       <div style={{ textAlign: "center" }}>{index + 1}</div>
